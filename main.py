@@ -25,7 +25,7 @@ def get_url(url):
 
 
 start = datetime.now()
-for i in range(1, 10):
+for i in range(1, 100):
     jobs = [gevent.spawn(get_url, _url) for _url in urls]
     gevent.wait(jobs)
 print(datetime.now() - start)
@@ -37,5 +37,6 @@ async def get_urls():
 
 
 start = datetime.now()
-anyio.run(get_urls)
+for i in range(1, 100):
+    anyio.run(get_urls)
 print(datetime.now() - start)
